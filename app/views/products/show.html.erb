@@ -11,3 +11,18 @@
   <%= @product.price %>
 </p>
 
+<p>
+<%= link_to 'Edit', edit_product_path %>
+<%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<p>
+  <%= link_to 'First', "#{Product.first.id}" %>
+<% if @previous %>
+  <%= link_to 'Previous', @previous %>
+<% end %>
+<% if @next %>
+  <%= link_to 'Next', @next %>
+<% end %>
+  <%= link_to 'Last', "#{Product.last.id}" %>
+</p>

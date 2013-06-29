@@ -28,6 +28,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.where(id: params[:id]).first
+    @previous = Product.where("id < #{params[:id]}").last
+    @next = Product.where("id > #{params[:id]}").first
 
     respond_to do |format|
       format.html # show default view
@@ -53,4 +55,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.where(id: params[:id]).first
+    @product.destroy
+
+    respond_to do |format|
+      format.html { redirect_to products_url }
+      format.json { head :no_content }
+    end
+  end
 end
