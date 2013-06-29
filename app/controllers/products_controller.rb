@@ -7,6 +7,14 @@ class ProductsController < ApplicationController
       format.json { render json: @products }
     end
   end
+  def show
+    @product = Product.where(id: params[:id]).first
+
+    respond_to do |format|
+      format.html # show default view
+      format.json { render json: @product }
+    end
+  end
 
   def new
     @product = Product.new
