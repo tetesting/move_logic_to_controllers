@@ -1,3 +1,6 @@
+<% if flash[:notice].present? %>
+  <p class="flash-notice"><%= flash[:notice] %></p>
+<% end %>
 <p>
   <b>Name:</b>
   <%= @product.name %>
